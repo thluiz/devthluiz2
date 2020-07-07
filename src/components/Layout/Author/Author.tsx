@@ -27,11 +27,7 @@ const Author = (): React.ReactElement => {
         A personal blog by{" "}
         <a href={`https://www.linkedin.com/in/${author.social.linkedin}`}>
           {author.name}
-        </a>{" "}
-        about coding, traveling, habit building, and much more (Psst... I am{" "}
-        <em>
-          <Link to="/resume">open to opportunities</Link>.)
-        </em>
+        </a>{" "}       
       </h5>
     </Root>
   );
