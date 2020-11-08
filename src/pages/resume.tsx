@@ -30,7 +30,7 @@ const ResumePage: React.FunctionComponent = (): React.ReactElement => {
         description={`Check out ${author.name}'s resume and feel free to drop him a message 🙏`}
       />
       <DownloadURL
-        href={resume.publicURL}
+        href={resume?.publicURL}
         type="application/pdf"
         ref={resumeUrl}
       />
