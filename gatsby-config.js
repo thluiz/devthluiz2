@@ -69,7 +69,7 @@ module.exports = {
         short_name: `${siteConfig.siteMetadata.author.username}`,
         start_url: "/",
         background_color: "#fafafa",
-        theme_color: "#ff483b",
+        theme_color: "#481aee",
         display: "minimal-ui",
         icon: `content/assets/${siteConfig.siteMetadata.author.assets.icon}`,
       },

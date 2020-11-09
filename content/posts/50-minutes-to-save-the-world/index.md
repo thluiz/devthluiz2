@@ -2,7 +2,7 @@
 title: "50 Minutes to Save the\_World"
 template: post
 slug: 50-minutes-to-save-the-world
-draft: false
+draft: true
 featured: false
 date: "2019-07-03T15:00:00.000Z"
 description: >-

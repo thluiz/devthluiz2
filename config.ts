@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    copyright: "© All rights reserved.",
+    copyright: "© Todos os direitos reservados.",
     description:
       "...",
     googleAnalyticsId: "",
@@ -9,13 +9,13 @@ module.exports = {
     title: "Arquivos - Thiago Luiz Silva",
     author: {
       birthDate: new Date("1984-11-29"),
-      firstname: "Th Luiz",
+      firstname: "Thiago Luiz",
       lastname: "Silva",
-      name: "ThLuiz",
+      name: "Thiago",
       title: "Developer",
       descriptions: {
         intro:
-          "Desenvolvedor",
+          "",
       },
       assets: {
         icon: "avatar_rounded.png",

@@ -2,7 +2,7 @@
 title: Story sample 2
 template: post
 slug: story-sample-2
-draft: false
+draft: true
 featured: false
 date: "2018-01-01T15:00:00.000Z"
 description: >-

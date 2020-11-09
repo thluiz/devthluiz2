@@ -22,33 +22,17 @@ const About: React.FunctionComponent<AboutProps> = ({
       <Avatar fixed={avatar.childImageSharp.fixed as FixedObject} />
 
       <Description>
-        <h4>Hey there my friend!</h4>
+        <h4>Fala ae!</h4>
         <p>
-          My name is {author.name}, and I am {yearsSince(author.birthDate)}{" "}
-          years old. I have a passion for products having constructive effects
-          on our lives, and I love to be involved in the development of
-          purposeful applications.
+          Olá! Meu nome é {author.name}. Tenho {yearsSince(author.birthDate)} anos, programo desde o século passado, antes de Matrix, quando passar horas olhando para um terminal com fundo preto com letrinhas era só bem nerd. No entanto, só comecei a receber por isso mesmo em 2002, nos longínquos anos do DHTML, que é quando costumo colocar meu início de carreira.
         </p>
 
         <p>
-          I contribute to the product life cycle with my comprehensive skills in
-          web development, my growing knowledge of behavioral sciences and human
-          psychology, and my neverending hunger for growth.
+          Esse ano de 2020, minha carreira atingiu a maioridade, e chegou a hora de tentar devolver um pouco para comunidade de software que sempre me apoiou gratuitamente.
         </p>
-
-        <p>
-          When not building stuff, I love to explore, read fascinating books,
-          learn languages, write about my experiences in life, have amazing
-          dinners and meet interesting people. I am also obsessed with building
-          positive habits. I believe they are the keys to unlock our full
-          potential.
-        </p>
-
-        <p>
-          Do you want to find out more about me? Please shoot me an email at{" "}
-          <strong>{author.social.email}</strong> or reach out to me on social
-          media, listed below.
-        </p>
+          
+        
+        
       </Description>
     </Root>
   );
