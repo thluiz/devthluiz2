@@ -24,11 +24,11 @@ const About: React.FunctionComponent<AboutProps> = ({
       <Description>
         <h4>Fala ae!</h4>
         <p>
-          Olá! Meu nome é {author.name}. Tenho {yearsSince(author.birthDate)} anos, programo desde o século passado, antes de Matrix, quando passar horas olhando para um terminal com fundo preto com letrinhas era só bem nerd. No entanto, só comecei a receber por isso mesmo em 2002, nos longínquos anos do DHTML, que é quando costumo colocar meu início de carreira.
+          Olá! Meu nome é {author.name}. Tenho {yearsSince(author.birthDate)} anos, programo desde o século passado, quando passar horas olhando para um terminal com fundo preto com letrinhas era só bem nerd. Só comecei a receber por isso mesmo em 2002, nos longínquos anos do DHTML, que é quando costumo colocar meu início de carreira.
         </p>
 
         <p>
-          Esse ano de 2020, minha carreira atingiu a maioridade, e chegou a hora de tentar devolver um pouco para comunidade de software que sempre me apoiou gratuitamente.
+          Esse ano de 2020, minha carreira atingiu a maioridade, e já passou da hora de tentar devolver um pouco para comunidade de software que sempre me apoiou gratuitamente.
         </p>
           
         

@@ -21,7 +21,7 @@ const Intro: React.FunctionComponent<{}> = (): React.ReactElement => {
         />
         <PitchContainer>
           <Greeting>Olá! 👋</Greeting>
-          <SubTitle>Algumas ideias sobre desenvolvimento</SubTitle>
+          <SubTitle>Algumas ideias sobre soft skills e desenvolvimento</SubTitle>
           <Description>{author.descriptions.intro}</Description>
         </PitchContainer>
       </HeadingContainer>
