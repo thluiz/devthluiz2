@@ -24,9 +24,9 @@ const Author = (): React.ReactElement => {
     <Root>
       <StyledImage fixed={avatarFixedImage} alt={author.name} />
       <h5>
-        Escritos sobre desenvolvimento de {" "}
-        <a href={`https://github.com/${author.social.github}`}>
-          {author.name}
+        Thoughts about software development by {" "}
+        <a href={`/about`}>
+          {author.name} {author.lastname}
         </a>{" "}       
       </h5>
     </Root>

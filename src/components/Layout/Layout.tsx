@@ -57,7 +57,7 @@ const Root = styled.div`
   flex-direction: column;
   margin: 0 auto;
   min-height: 100vh;
-  background: #fafafa;
+  background: ${colors.bgColor};
   padding: ${rhythm(3 / 4 + 3)} ${rhythm(3 / 4)} ${rhythm(3 / 4)};
 
   @media ${device.tablet} {

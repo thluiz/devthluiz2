@@ -20,8 +20,8 @@ const Intro: React.FunctionComponent<{}> = (): React.ReactElement => {
           alt={author.name}
         />
         <PitchContainer>
-          <Greeting>Olá! 👋</Greeting>
-          <SubTitle>Algumas ideias sobre soft skills e desenvolvimento</SubTitle>
+          <Greeting>Hello! 👋</Greeting>
+          <SubTitle>Thoughts about software development and other skills</SubTitle>
           <Description>{author.descriptions.intro}</Description>
         </PitchContainer>
       </HeadingContainer>

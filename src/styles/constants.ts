@@ -20,6 +20,7 @@ export const device = {
 };
 
 export const colors = {
-  lightGray: "#E6E6E9",
+  lightGray: "#D6D6EC",
   accent: "#481aee",
+  bgColor: "#D7E6F7",
 };
