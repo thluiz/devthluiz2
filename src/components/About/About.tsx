@@ -22,17 +22,15 @@ const About: React.FunctionComponent<AboutProps> = ({
       <Avatar fixed={avatar.childImageSharp.fixed as FixedObject} />
 
       <Description>
-        <h4>Fala ae!</h4>
+        <h4>Olá!</h4>
         <p>
-          Olá! Meu nome é {author.name}. Tenho {yearsSince(author.birthDate)} anos, programo desde o século passado, quando passar horas olhando para um terminal com fundo preto com letrinhas era só bem nerd. Só comecei a receber por isso mesmo em 2002, nos longínquos anos do DHTML, que é quando costumo colocar meu início de carreira.
+          Olá! Meu nome é {author.name}. Tenho {yearsSince(author.birthDate)} anos, programo desde o século passado, quando passar horas olhando para um terminal com letrinhas era só bem nerd. Só comecei a receber por isso mesmo em 2002, nos longínquos anos do DHTML, que é quando costumo colocar meu início de carreira.
         </p>
 
         <p>
-          Esse ano de 2020, minha carreira atingiu a maioridade, e já passou da hora de tentar devolver um pouco para comunidade de software que sempre me apoiou gratuitamente.
+          Em 2020 minha carreira atingiu a maioridade, e já passou da hora devolver um pouco para comunidade de software que sempre me apoiou gratuitamente.
         </p>
-          
-        
-        
+                          
       </Description>
     </Root>
   );
