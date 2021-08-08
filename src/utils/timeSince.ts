@@ -6,9 +6,5 @@ export const yearsSince = (timestamp: Date | string): number => {
     localTimestamp = new Date(localTimestamp);
   }
 
-  const thisYear = new Date().getFullYear();
-  const timestampYear = localTimestamp.getFullYear();
-  const year = thisYear - timestampYear;
-
-  return year;
+  return Math.floor(Math.abs(new Date().getTime() - localTimestamp.getTime()) / (365 * 1000 * 3600 * 24));
 };
