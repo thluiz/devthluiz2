@@ -138,7 +138,7 @@ Now it's easier to write the test for the second statement from our requirement:
     const obstacle = {};
     const removeSpy = jest.fn();
     Player.mockImplementation(() => {
-      return { checkCollision: (manager) => { return obstacle; }, 
+      return { checkCollision: (manager) => { return { Obstacle: obstacle }; }, 
                 Knockback: jest.fn() };
     });
 
