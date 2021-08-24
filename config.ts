@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     copyright: "© Todos os direitos reservados.",
     description:
-      "...",
+      "Thoughts about development and soft skills",
     googleAnalyticsId: "",
     pathPrefix: "/",
     siteUrl: "https://dev.thluiz.com",
@@ -21,14 +21,14 @@ module.exports = {
         icon: "avatar_rounded.png",
         photo: "/avatar.jpeg",
       },
-      resume: "...",
+      resume: "https://resume.thluiz.com",
       username: "thluiz",
       social: {
-        email: "contato@thluiz.com",
+        email: "contact@thluiz.com",
         github: "thluiz",
         goodreads: "",
         instagram: "",
-        linkedin: "",
+        linkedin: "thluiz",
         medium: "",
         twitter: "thluiz",
       },

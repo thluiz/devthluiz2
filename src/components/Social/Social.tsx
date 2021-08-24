@@ -26,10 +26,11 @@ const Social: React.FunctionComponent<SocialProps> = ({
       >        
         <SocialLink type="github" userId={social.github} />        
         <SocialLink type="twitter" userId={social.twitter} />        
+        <SocialLink type="linkedin" userId={social.linkedin} /> 
         <SocialLink
           type="email"
           rootProps={{
-            href: `mailto:${social.email}?subject=Olá, ${firstname}%21!`,
+            href: `mailto:${social.email}?subject=Hi, ${firstname}%21!`,
           }}
         />
       </Root>

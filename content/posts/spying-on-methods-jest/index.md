@@ -157,3 +157,7 @@ Now it's easier to write the test for the second statement from our requirement:
 ### Source
 
 -   <https://jestjs.io/docs/es6-class-mocks>
+
+### Credits
+
+-   Revision by [Henrique Jardim](https://twitter.com/henriquejardim)
