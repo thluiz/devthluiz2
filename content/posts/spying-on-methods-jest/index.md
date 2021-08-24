@@ -5,7 +5,7 @@ slug: spying-on-methods-jest
 draft: false
 featured: true
 date: '2021-08-21T09:00:00.000Z'
-description: Spying on methods to check domain logic
+description: Spying on methods to check application logic
 cover: ./spy-methods-cover.jpeg
 category: Tests
 tags:
@@ -37,7 +37,7 @@ public class Game {
 
     if(collision) {
       obstacleManager.Remove(collision.Obstacle);
-      player.Drawback();
+      player.Knockback();
     }
   }
 }
@@ -59,7 +59,7 @@ describe("Game Tests", () => {
     expect(collision).toBe(obstacle);
   });
 
-  test("The player should have a drawback if hit an obstacle", () => {
+  test("The player should have a Knockback if hit an obstacle", () => {
     const obstacle = new Obstacle(0,0); /*creating objects with the position*/
     const obstacleManager = new ObstacleManager([ obstacle ]);
     const player = new Player(0, 0);
@@ -67,7 +67,7 @@ describe("Game Tests", () => {
     const game = new Game(player, obstacleManager);    
     game.updateGameState();
 
-    expect(player.Drawbacked).toBe(true);
+    expect(player.Knockbacked).toBe(true);
   });
 });
 ```
@@ -77,7 +77,7 @@ This kind of approach is still valid (it's better to have some tests than no tes
 -   Your tests may become brittle over time - Every change to the entities (player, obstacles, managers) may require changes in all tests;
 -   The Entities may not be so easy to set up - The Player may rely on Canvas, EventListeners, or Network, etc. to be constructed;
 -   You are mixing player logic with obstacle manager logic. Both entities are coupled by these tests;
--   `Drawbacked` can be an internal/private property that we'll need to expose just to test (information leak);
+-   `Knockback` can be an internal/private property that we'll need to expose just to test (information leak);
 
 Fourtnelly, Jest has powerful mechanisms that let you Mock even your import statements:
 
@@ -90,23 +90,23 @@ import { Player } from "../Entities/Player";
 import { ObstacleManager } from "../Entities/Obstacles/ObstacleManager";
 
 /* STEP 1 : Setup what jest will be mocking */
-jest.mock("../Entities/Skier"); 
+jest.mock("../Entities/Player"); 
 jest.mock("../Entities/Obstacles/ObstacleManager");
 
 describe("Game Tests", () => {
 
   beforeEach(() => {
     /* STEP 2 : Clear all instances between tests */
-    Skier.mockClear();
+    Player.mockClear();
     ObstacleManager.mockClear();    
   });
 
-  test("The player should have a drawback if hit an obstacle", () => {    
+  test("The player should have a Knockback if hit an obstacle", () => {    
     /* STEP 3 : Creating Spies */
-    const drawbackSpy = jest.fn();
+    const knockbackSpy = jest.fn();
     Player.mockImplementation(() => {
       return { checkCollision: (manager) => { return {}; }, 
-                Drawback: drawbackSpy };
+                Knockback: knockbackSpy };
     });
 
     // Jest will take care of injecting the dependencies where needed
@@ -114,7 +114,7 @@ describe("Game Tests", () => {
 
     game.updateGameState();
 
-    expect(drawbackSpy).toBeCalled();
+    expect(knockbackSpy).toBeCalled();
   });
 });
 ```
@@ -129,7 +129,7 @@ The advantages of this approach:
 
 -   This test can focus in the game logic itself because is isolated from the entities. The Game object just need to know the interface that the objects will be using (here represented by its functions);
 -   Again, The entities itself don't need to know about it other. The `Player` is not coupled with the `ObstacleManager` anymore, we are just using the "interface" method CheckCollision to ensure that our Game have the appropriate logic;
--   We don't need to leak information from the `Player`, we can check, with the spy function, that our application is calling the `Drawback` method;
+-   We don't need to leak information from the `Player`, we can check, with the spy function, that our application is calling the `Knockback` method;
 
 Now it's easier to write the test for the second statement from our requirement:
 
@@ -139,11 +139,11 @@ Now it's easier to write the test for the second statement from our requirement:
     const removeSpy = jest.fn();
     Player.mockImplementation(() => {
       return { checkCollision: (manager) => { return obstacle; }, 
-                Drawback: jest.fn() };
+                Knockback: jest.fn() };
     });
 
     ObstacleManager.mockImplementation(() => {
-      return { remove: (obstacle) => jest.fn() };
+      return { remove: (obstacle) => removeSpy };
     });
 
     const game = new Game();
