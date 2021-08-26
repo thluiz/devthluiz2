@@ -9,7 +9,7 @@ description: Spying on methods to check application logic
 cover: ./spy-methods-cover.jpeg
 category: Tests
 tags:
-  - tests
+  - testing
   - javascript
   - mock
 ---
