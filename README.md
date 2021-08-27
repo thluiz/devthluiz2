@@ -1,46 +1,53 @@
-_Example using the starter in production:_ [robertistok.com](https://www.robertistok.com)
+<h1 align="center">
+  Flexible Gatsby
+</h1>
 
----
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a0a6e226-6c7a-43e0-bab6-0c658c8abca5/deploy-status)](https://app.netlify.com/sites/flexible-gatsby/deploys)
 
-## Getting started
+A simple minimalist Gatsby starter for your blog. [Demo](https://flexible-gatsby.netlify.com/).
 
-1. Create a Gatsby site
+Inspired by [flexible-jekyll](https://github.com/artemsheludko/flexible-jekyll).
 
- ```shell
-    gatsby new your-name-here https://github.com/gatsbyjs/gatsby-starter-fusion-blog
- ```
-  
-2. Start developing
+![home-page-screenshot](./static/promo-img.jpg)
 
-```shell
-    cd your-name-here
+![home-page-screenshot](./static/home-page.jpg)
+
+![blog-page-screenshot](./static/post-example.jpg)
+
+## Quick Start 🚀
+
+1.  **Create a Gatsby site.**
+
+    Use the Gatsby CLI to create a new site, specifying the default starter.
+
+    ```sh
+    # create a new Gatsby site using the-plain-gatsby starter
+    gatsby new my-blog https://github.com/wangonya/flexible-gatsby
+    ```
+
+2.  **Start developing.**
+
+    Navigate into your new site’s directory and start it up.
+
+    ```sh
+    cd my-blog/
     gatsby develop
- ```
+    ```
 
-3. Open and edit the source code
+3.  **Open the source code and start editing!**
 
-Your site is now running at `http://localhost:8000`!
+    Your site is now running at `http://localhost:8000`!
 
-## How to personalize?
+    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
-1. Open `config.ts`
-2. Change the fields (name, description, social) to your data
-3. Edit the **author info** at `src/components/Layout/Author/Author.tsx`
-4. Edit the **about** section at `src/components/About/About.tsx`
-5. Update the `src/hooks/useAvatar.ts` hook with your profile picture
-6. Update the `src/pages/resume` with your resume
+    Edit `gatsby.config.js` to update site metadata.
 
-## Deploy to Netlify
+    Add blog posts in markdown in `content/blog`. Example blog posts have been provided.
 
-Follow [this guide](https://www.gatsbyjs.org/docs/deploying-to-netlify/) to deploy to [Netlify](https://netlify.com/)
+## Contributors
 
+Much thanks to these contributors for making this project awesome:
 
-## Building
-
-```shell
-   gatsby build
-```
-
----
-
-Forked from [Gatsby blog starter](https://github.com/gatsbyjs/gatsby-starter-blog). Syntax theme based on [Dan Abramovs's overreacted](https://github.com/gaearon/overreacted.io/) which in turn is based on [Sarah Drasner's Night Owl](https://github.com/sdras/night-owl-vscode-theme/).
+-   [@scottelundgren](https://github.com/scottelundgren)
+-   [@sparky005](https://github.com/sparky005)
+-   [@wozniaklukasz](https://github.com/wozniaklukasz)

@@ -1,160 +1,95 @@
-require("dotenv").config({ path: ".env" });
-
-const siteConfig = require("./config.ts");
-
 module.exports = {
-  siteMetadata: siteConfig.siteMetadata,
+  siteMetadata: {
+    title: `Flexible Gatsby`,
+    description: `Thoughts about development and soft skills`,
+    author: `Thiago Silva`,
+    siteUrl: `https://github.com/thluiz`,
+    social: {
+      twitter: `thluiz`,
+      facebook: ``,
+      github: `thluiz`,
+      linkedin: `thluiz`,
+      email: `contact@thluiz.com`,
+    },
+  },
   plugins: [
-    //feed
     {
-      resolve: `gatsby-plugin-feed`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.frontmatter.description,
-                  date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }],
-                })
-              })
-            },
-            query: `
-              {
-                allMarkdownRemark(
-                  filter: { frontmatter: { draft: { eq: false } } }
-                  sort: { order: DESC, fields: [frontmatter___date] }
-                ) {
-                  edges {
-                    node {                      
-                      html
-                      fields { slug }
-                      frontmatter {
-                        title
-                        date
-                        description
-                      }
-                    }
-                  }
-                }
-              }
-            `,
-            output: "/rss.xml",
-            title: "Dev ThLuiz",
-            // optional configuration to insert feed reference in pages:
-            // if `string` is used, it will be used to create RegExp and then test if pathname of
-            // current page satisfied this regular expression;
-            // if not provided or `undefined`, all pages will have feed reference inserted
-            match: "^/blog/",
-            // optional configuration to specify external rss feed, such as feedburner
-            //link: "https://feeds.feedburner.com/gatsby/blog",
-          },
-        ],
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
       },
     },
     {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        path: `${__dirname}/content/posts/`,
-        name: "posts",
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/assets`,
-        name: "assets",
+        name: `assets`,
       },
     },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           {
-            resolve: "gatsby-remark-bitly-links",
+            resolve: `gatsby-remark-images`,
             options: {
-              accessToken: process.env.BITLY_ACCESS_TOKEN,
-              namedBitlys: ["mzl.la"],
+              maxWidth: 970,
+              withWebp: true,
+              withAvif: true,
             },
           },
           {
-            resolve: "gatsby-remark-images",
+            resolve: `gatsby-remark-katex`,
             options: {
-              maxWidth: 820,
-              showCaptions: true,
+              strict: `warn`,
             },
           },
           {
-            resolve: "gatsby-remark-responsive-iframe",
+            resolve: `gatsby-remark-copy-linked-files`,
             options: {
-              wrapperStyle: "margin-bottom: 1.0725rem",
+              destinationDir: `files`,
+              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`],
             },
-          },
+          },          
           {
-            resolve: "gatsby-remark-prismjs",
-            options: {
-              inlineCodeMarker: "÷",
-              showLineNumbers: false,
+            resolve: `gatsby-remark-prismjs`,
+            options: {              
+              prompt: {
+                user: "root",
+                host: "localhost",
+                global: true,
+              },
             },
           },
-          "gatsby-remark-copy-linked-files",
-          "gatsby-remark-smartypants",
         ],
       },
     },
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp",
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    // uncomment this and input the trackingId to enable google analytics
+    // {
+    // resolve: `gatsby-plugin-google-analytics`,
+    // options: {
+    // trackingId: `ADD YOUR TRACKING ID HERE`,
+    // },
+    // },
+    `gatsby-plugin-feed`,
     {
-      resolve: "gatsby-plugin-google-analytics",
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+        name: `flexible-gatsby-starter`,
+        short_name: `flexible-gatsby`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `./static/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        name: `${siteConfig.siteMetadata.author.name}'s website`,
-        short_name: `${siteConfig.siteMetadata.author.username}`,
-        start_url: "/",
-        background_color: "#fafafa",
-        theme_color: "#481aee",
-        display: "minimal-ui",
-        icon: `content/assets/${siteConfig.siteMetadata.author.assets.icon}`,
-      },
-    },
-    "gatsby-plugin-offline",
-    "gatsby-plugin-react-helmet",
-    {
-      resolve: "gatsby-plugin-typography",
-      options: {
-        pathToConfigModule: "src/utils/typography",
-      },
-    },
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-sitemap",
-
-    // Typescript
-    "gatsby-plugin-typescript",
-    {
-      resolve: "gatsby-plugin-generate-typings",
-      options: {
-        dest: "./src/types/graphql.ts",
-      },
-    },    
+    // `gatsby-plugin-offline`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sass`,
   ],
-};
+}
