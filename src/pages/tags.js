@@ -6,8 +6,9 @@ import { Link, graphql } from 'gatsby'
 import { kebabCase } from 'lodash'
 
 import Layout from '../components/layout'
+
 const TagsPage = ({ data }) => {
-  const allTags = data.allMarkdownRemark.group
+  const allTags = data.allMarkdownRemark.group.sort((a, b) => b.totalCount - a.totalCount)
 
   return (
     <Layout>
@@ -36,7 +37,9 @@ export default TagsPage
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(limit: 2000) {
+    allMarkdownRemark(
+      filter: { frontmatter: { draft: { eq: false } } }
+      limit: 2000) {      
       group(field: frontmatter___tags) {
         fieldValue
         totalCount

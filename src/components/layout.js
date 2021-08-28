@@ -23,6 +23,14 @@ const DefaultLayout = ({ children }) => (
               email
             }
           }
+        }        
+        tagsGroups: allMarkdownRemark(
+            filter: { frontmatter: { draft: { eq: false } } }
+          ) {      
+          groupedTags: group(field: frontmatter___tags) {
+            tag: fieldValue
+            count: totalCount
+          }
         }
       }
     `}
@@ -34,7 +42,7 @@ const DefaultLayout = ({ children }) => (
             rel="stylesheet"
           />
         </Helmet>
-        <Sidebar siteMetadata={data.site.siteMetadata} />
+        <Sidebar siteMetadata={data.site.siteMetadata} tags={data.tagsGroups.groupedTags} />
         {children}
       </div>
     )}

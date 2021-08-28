@@ -17,11 +17,34 @@ const Tags = ({ pageContext, data }) => {
             {edges.map(({ node }) => {
               const { title, date } = node.frontmatter
               const { slug } = node.fields
-              return (
-                <li key={slug}>
-                  <Link to={slug}>{title}</Link>
-                  <small> | {date}</small>
-                </li>
+              return (                
+                <li key={slug}>                  
+                  <article className="post" key={node.fields.slug}>
+                  {node.frontmatter.img &&
+                    node.frontmatter.img.childImageSharp &&
+                    node.frontmatter.img.childImageSharp.gatsbyImageData && (
+                      <Link
+                        to={node.fields.slug}
+                        className="post-thumbnail"
+                        style={{
+                          backgroundImage: `url(${node.frontmatter.img.childImageSharp.gatsbyImageData.images.fallback.src})`,
+                        }}
+                      />
+                    )}
+                  <div className="post-content">
+                    <h2 className="post-title">
+                      <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+                    </h2>
+                    <p>{node.excerpt}</p>
+                    <span className="post-date">
+                      {node.frontmatter.date}&nbsp;&nbsp;—&nbsp;
+                    </span>
+                    <span className="post-words">
+                      {node.timeToRead} minute read
+                    </span>
+                  </div>
+                </article>
+              </li>
               )
             })}
           </ul>
@@ -46,12 +69,18 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
+          excerpt
           fields {
             slug
           }
           frontmatter {
-            title
+            title                       
             date(formatString: "MMMM DD, YYYY")
+            img {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [AUTO, AVIF, WEBP])
+              }
+            }
           }
         }
       }

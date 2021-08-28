@@ -11,9 +11,8 @@ category: architecture
 tags:
   - solid
   - architecture
-  - di
-  - dependency-injection
-  - testing
+  - di  
+  - tests
 ---
 ## Objective
 
