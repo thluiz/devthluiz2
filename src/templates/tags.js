@@ -35,7 +35,7 @@ const Tags = ({ pageContext, data }) => {
                     <h2 className="post-title">
                       <Link to={"/" + node.frontmatter.slug}>{node.frontmatter.title}</Link>
                     </h2>
-                    <p>{node.excerpt}</p>
+                    <p>{node.frontmatter.description}</p>
                     <span className="post-date">
                       {node.frontmatter.date}&nbsp;&nbsp;—&nbsp;
                     </span>
@@ -68,8 +68,7 @@ export const pageQuery = graphql`
     ) {
       totalCount
       edges {
-        node {
-          excerpt
+        node {          
           fields {
             slug
           }
@@ -77,6 +76,7 @@ export const pageQuery = graphql`
             title                       
             date(formatString: "MMMM DD, YYYY")
             slug
+            description
             img {
               childImageSharp {
                 gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [AUTO, AVIF, WEBP])

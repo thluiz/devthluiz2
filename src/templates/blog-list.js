@@ -40,7 +40,7 @@ class BlogIndex extends React.Component {
                   <h2 className="post-title">
                     <Link to={"/" + node.frontmatter.slug}>{node.frontmatter.title}</Link>
                   </h2>
-                  <p>{node.excerpt}</p>
+                  <p>{node.frontmatter.description}</p>
                   <span className="post-date">
                     {node.frontmatter.date}&nbsp;&nbsp;—&nbsp;
                   </span>
@@ -107,6 +107,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "YYYY, MMM DD")
             slug
+            description
             title
             img {
               childImageSharp {
