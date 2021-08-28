@@ -19,12 +19,12 @@ const Tags = ({ pageContext, data }) => {
               const { slug } = node.fields
               return (                
                 <li key={slug}>                  
-                  <article className="post" key={node.fields.slug}>
+                  <article className="post" key={node.frontmatter.slug}>
                   {node.frontmatter.img &&
                     node.frontmatter.img.childImageSharp &&
                     node.frontmatter.img.childImageSharp.gatsbyImageData && (
                       <Link
-                        to={node.fields.slug}
+                        to={ "/" + node.frontmatter.slug}
                         className="post-thumbnail"
                         style={{
                           backgroundImage: `url(${node.frontmatter.img.childImageSharp.gatsbyImageData.images.fallback.src})`,
@@ -33,7 +33,7 @@ const Tags = ({ pageContext, data }) => {
                     )}
                   <div className="post-content">
                     <h2 className="post-title">
-                      <Link to={node.fields.slug}>{node.frontmatter.title}</Link>
+                      <Link to={"/" + node.frontmatter.slug}>{node.frontmatter.title}</Link>
                     </h2>
                     <p>{node.excerpt}</p>
                     <span className="post-date">
@@ -76,6 +76,7 @@ export const pageQuery = graphql`
           frontmatter {
             title                       
             date(formatString: "MMMM DD, YYYY")
+            slug
             img {
               childImageSharp {
                 gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [AUTO, AVIF, WEBP])

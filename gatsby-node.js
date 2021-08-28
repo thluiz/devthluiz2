@@ -12,6 +12,7 @@ exports.createPages = ({ graphql, actions }) => {
     `{
   allMarkdownRemark(
     sort: {fields: [frontmatter___date], order: DESC}
+    filter: { frontmatter: { draft: { eq: false } } }
     limit: 1000
   ) {
     edges {
@@ -22,6 +23,7 @@ exports.createPages = ({ graphql, actions }) => {
         frontmatter {
           title
           tags
+          slug
           img {
             childImageSharp {
               gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH)
@@ -46,10 +48,10 @@ exports.createPages = ({ graphql, actions }) => {
       const next = index === 0 ? null : posts[index - 1].node
 
       createPage({
-        path: post.node.fields.slug,
+        path: post.node.frontmatter.slug,
         component: blogPost,
         context: {
-          slug: post.node.fields.slug,
+          slug: post.node.frontmatter.slug,
           previous,
           next,
         },
