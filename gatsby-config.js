@@ -3,6 +3,7 @@ module.exports = {
     title: `Flexible Gatsby`,
     description: `Thoughts about development and soft skills`,
     author: `Thiago Silva`,
+    birthDate: "1984-11-29",
     siteUrl: `https://github.com/thluiz`,
     social: {
       twitter: `thluiz`,

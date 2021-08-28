@@ -16,11 +16,15 @@ const Sidebar = ( { siteMetadata, tags } ) => {
                 <img src={Logo} alt={siteMetadata.author} />
               </Link>
             </div>
-            <div className="author-name">{siteMetadata.author}</div>
+            <div className="author-name">
+              <Link to="/about" className="sidebar-section-link">
+                {siteMetadata.author}
+              </Link>
+            </div>
             <p>{siteMetadata.description}</p>
           </div>
           <div className="sideber-tags">
-            <Link to="/tags" className="sidebar-section-header">
+            <Link to="/tags" className="sidebar-section-link">
               <h3>Tags</h3>
             </Link>
             <ul className="tags">
@@ -92,7 +96,10 @@ const Sidebar = ( { siteMetadata, tags } ) => {
           </section>
           <div className="copyright">
             <p>
-              {new Date().getFullYear()} &copy; {siteMetadata.author}
+            {new Date().getFullYear()} &copy; {" "}
+              <Link to="/about">
+               {siteMetadata.author}
+              </Link>
             </p>
           </div>
         </footer>

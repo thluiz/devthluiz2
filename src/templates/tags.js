@@ -48,9 +48,9 @@ const Tags = ({ pageContext, data }) => {
               )
             })}
           </ul>
-          <span>
-            <Link to="/tags">← All tags</Link>
-          </span>
+          <div>
+            ← <Link to="/tags">All tags</Link> | <Link to="/">Home</Link>
+          </div>          
         </div>
       </div>
     </Layout>

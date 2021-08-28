@@ -42,7 +42,7 @@ class BlogPostTemplate extends React.Component {
                   </div>
                 </header>
                 <div dangerouslySetInnerHTML={{ __html: post.html }} />
-                <div className="page-footer">
+                <div className="page-footer">                  
                   <div className="page-tag">
                     {post.frontmatter.tags &&
                       post.frontmatter.tags.map((tag) => (
@@ -53,6 +53,9 @@ class BlogPostTemplate extends React.Component {
                         </span>
                       ))}
                   </div>
+                  <div>
+                    🔙 <Link to="/">Home</Link>
+                  </div>                  
                 </div>
               </div>
             </div>
